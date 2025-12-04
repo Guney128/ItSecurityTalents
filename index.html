@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <title>IT Security Talents – Passwort zurücksetzen</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: #0b1120;
+            color: #e5e7eb;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card {
+            background: #020617;
+            border-radius: 12px;
+            padding: 2.5rem 3rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            max-width: 480px;
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #1e293b;
+        }
+
+        h1 {
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+            font-size: 1.6rem;
+            color: #38bdf8;
+        }
+
+        p {
+            margin-top: 0.25rem;
+            margin-bottom: 1.5rem;
+            color: #cbd5f5;
+            font-size: 0.95rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.35rem;
+            font-weight: 500;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 0.55rem 0.7rem;
+            border-radius: 6px;
+            border: 1px solid #1e293b;
+            background: #020617;
+            color: #e5e7eb;
+            box-sizing: border-box;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #38bdf8;
+            box-shadow: 0 0 0 1px #38bdf8;
+        }
+
+        button {
+            margin-top: 1rem;
+            width: 100%;
+            padding: 0.6rem 0.7rem;
+            border-radius: 6px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            background: #38bdf8;
+            color: #020617;
+        }
+
+        button:hover {
+            background: #0ea5e9;
+        }
+
+        .message {
+            margin-top: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .message--error {
+            color: #f97373;
+        }
+
+        .message--success {
+            color: #4ade80;
+        }
+
+        /* Passwort-Element wird im Layout versteckt */
+        #hidden-password {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<main class="card">
+    <h1>IT Security Talents</h1>
+    <p>
+        Demo-Anwendung zum Zurücksetzen eines Passworts über eine Sicherheitsfrage.
+        Der Aufbau illustriert typische Schwachstellen von rein
+        clientseitigen Sicherheitsfragen.
+    </p>
+
+    <form id="reset-form">
+        <label for="mother-name">Sicherheitsfrage: Wie heißt deine Mutter?</label>
+        <input
+                id="mother-name"
+                name="mother-name"
+                type="text"
+                autocomplete="off"
+                placeholder="Vorname der Mutter">
+        <button type="submit">Passwort zurücksetzen</button>
+    </form>
+
+    <div id="message" class="message"></div>
+
+    <!--
+      ACHTUNG:
+      In einer echten Anwendung dürfte das Passwort niemals im Frontend
+      im Klartext auftauchen. Hier wird es nur zu Demonstrationszwecken
+      in einem versteckten Element und zusätzlich in diesem Kommentar
+      hinterlegt.
+
+      Neues Passwort (auch im versteckten Element unten enthalten):
+      ITsecTalents2024!
+    -->
+
+    <!-- verstecktes Element mit dem neuen Passwort -->
+    <span id="hidden-password">ITsecTalents2024!</span>
+</main>
+
+<script>
+    // "Korrekte" Antwort auf die Sicherheitsfrage
+    const CORRECT_ANSWER = "anna"; // beliebiger Name, hier: "Anna"
+
+    const form = document.getElementById("reset-form");
+    const messageEl = document.getElementById("message");
+    const hiddenPasswordEl = document.getElementById("hidden-password");
+
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const userAnswer = document
+            .getElementById("mother-name")
+            .value
+            .trim()
+            .toLowerCase();
+
+        if (userAnswer === CORRECT_ANSWER) {
+            const newPassword = hiddenPasswordEl.textContent.trim();
+            messageEl.textContent =
+                "Antwort korrekt. Das neue Passwort lautet: " + newPassword;
+            messageEl.className = "message message--success";
+        } else {
+            messageEl.textContent =
+                "Die eingegebene Antwort ist falsch. Das Passwort kann nicht zurückgesetzt werden.";
+            messageEl.className = "message message--error";
+        }
+    });
+</script>
+</body>
+</html>
