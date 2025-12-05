@@ -124,25 +124,62 @@
 </main>
 
 <script>
-    const CORRECT_ANSWER = "ronaldo";
+    const CORRECT_ANSWER = "Ronaldo";
     const form = document.getElementById("reset-form");
     const messageEl = document.getElementById("message");
     const hiddenPasswordEl = document.getElementById("hidden-password");
     const EXPECTED_PASSWORD = hiddenPasswordEl.textContent.trim();
 
-    // ⭐ Tarnung durch scheinbare Fehlermeldungen
-    console.warn("Deprecated API call detected: securityQuestion.v1 -> v2 expected");
-    console.error("Failed to load resource: /api/reset-password 404 (Not Found)");
-    console.warn("DevTools detected unusual input on security-question-field");
-    console.error("VM12:87 Uncaught ReferenceError: resetPassword is not defined");
-    console.error("ChunkLoadError: Loading chunk 23 failed.");
+    // 👇 Liste mit echten und falschen "Passwörtern" als Fake-Fehler
+    const errorPayloads = [
+        {
+            error: "Security Token mismatch",
+            details: {
+                token: "4xb$kj!92",
+                expected_pwd: "Sommer2024!"
+            }
+        },
+        {
+            error: "Cryptographic Policy Violation",
+            details: {
+                reason: "Weak hash detected",
+                expected_pwd: "Passwort123"
+            }
+        },
+        {
+            error: "Illegal password format",
+            details: {
+                minLength: 12,
+                expected_pwd: "Ronaldo"
+            }
+        },
+        {
+            error: "Policy Refused",
+            details: {
+                type: "plaintext",
+                expected_pwd: EXPECTED_PASSWORD // ✔ echtes Passwort verschachtelt
+            }
+        },
+        {
+            error: "CSS Injection Blocked",
+            details: {
+                expected_pwd: "rootAdmin!"
+            }
+        },
+        {
+            error: "Buffer Overflow Prevented",
+            details: {
+                expected_pwd: "LetMeHack"
+            }
+        }
+    ];
 
-    // 🔴 Hier ist das versteckte Passwort als Error getarnt:
-    console.error(
-        "Refused to apply password policy: Expected value: %c" + EXPECTED_PASSWORD,
-        "color:red; font-weight:bold;"
-    );
+    // ❌ Ausgabe vieler verschachtelter Fehlermeldungen
+    errorPayloads.forEach((payload) => {
+        console.error(payload.error, payload);
+    });
 
+    // Formularverhalten
     form.addEventListener("submit", function (event) {
         event.preventDefault();
 
@@ -154,20 +191,21 @@
 
         if (userAnswer === CORRECT_ANSWER) {
             messageEl.textContent =
-                "Antwort korrekt! Weiterleitung zu einer Security-Ressource...";
+                "Antwort korrekt! Weiterleitung…";
             messageEl.className = "message message--success";
 
             setTimeout(() => {
                 window.location.href = "https://owasp.org";
-            }, 1000);
+            }, 1200);
 
         } else {
             messageEl.textContent =
-                "Die eingegebene Antwort ist falsch. Das Passwort kann nicht zurückgesetzt werden.";
+                "Die eingegebene Antwort ist falsch.";
             messageEl.className = "message message--error";
         }
     });
 </script>
+
 
 </body>
 </html>
