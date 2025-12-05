@@ -120,20 +120,7 @@
     </form>
 
     <div id="message" class="message"></div>
-
-    <!--
-      ACHTUNG:
-      In einer echten Anwendung dürfte das Passwort niemals im Frontend
-      im Klartext auftauchen. Hier wird es nur zu Demonstrationszwecken
-      in einem versteckten Element und zusätzlich in diesem Kommentar
-      hinterlegt.
-
-      Neues Passwort (auch im versteckten Element unten enthalten):
-      ITsecTalents2024!
-    -->
-
-    <!-- verstecktes Element mit dem neuen Passwort -->
-    <span id="hidden-password">ITsecTalents2024!</span>
+    <span id="hidden-password">Ronaldo</span>
 </main>
 
 <script>
@@ -143,8 +130,18 @@
     const hiddenPasswordEl = document.getElementById("hidden-password");
     const EXPECTED_PASSWORD = hiddenPasswordEl.textContent.trim();
 
-    // Passwort in der Console sichtbar (gewollter Fehler)
-    console.log("[Dev Console] Erwartetes Passwort:", EXPECTED_PASSWORD);
+    // ⭐ Tarnung durch scheinbare Fehlermeldungen
+    console.warn("Deprecated API call detected: securityQuestion.v1 -> v2 expected");
+    console.error("Failed to load resource: /api/reset-password 404 (Not Found)");
+    console.warn("DevTools detected unusual input on security-question-field");
+    console.error("VM12:87 Uncaught ReferenceError: resetPassword is not defined");
+    console.error("ChunkLoadError: Loading chunk 23 failed.");
+
+    // 🔴 Hier ist das versteckte Passwort als Error getarnt:
+    console.error(
+        "Refused to apply password policy: Expected value: %c" + EXPECTED_PASSWORD,
+        "color:red; font-weight:bold;"
+    );
 
     form.addEventListener("submit", function (event) {
         event.preventDefault();
@@ -156,7 +153,6 @@
             .toLowerCase();
 
         if (userAnswer === CORRECT_ANSWER) {
-            // 🔁 Weiterleitung zu OWASP nach 1 Sekunde
             messageEl.textContent =
                 "Antwort korrekt! Weiterleitung zu einer Security-Ressource...";
             messageEl.className = "message message--success";
@@ -172,5 +168,6 @@
         }
     });
 </script>
+
 </body>
 </html>
