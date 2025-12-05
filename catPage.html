@@ -16,6 +16,7 @@
             align-items: center;
             justify-content: center;
             padding: 4rem 2rem;
+            position: relative;      /* NEU */
         }
 
         .bg-right {
@@ -28,7 +29,7 @@
                     linear-gradient(to left, rgba(255,255,255,0.05), rgba(255,255,255,0.85)),
                     url("https://images.pexels.com/photos/1482620/pexels-photo-1482620.jpeg?auto=compress&cs=tinysrgb&w=1600")
                     center/cover no-repeat;
-            z-index: -1;
+            z-index: 0;              /* statt -1 */
         }
 
         .page-wrapper {
@@ -39,7 +40,10 @@
             padding: 2.2rem 2.4rem;
             border: 1px solid #d1d5db;
             box-shadow: 0 8px 30px rgba(0,0,0,0.07);
+            position: relative;      /* NEU */
+            z-index: 1;              /* NEU */
         }
+
 
         h1 {
             font-size: 2rem;
