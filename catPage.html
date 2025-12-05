@@ -11,39 +11,24 @@
         body {
             font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
             min-height: 100vh;
-            background: #ffffff;
+            background: url("https://st3.depositphotos.com/1177973/12632/i/950/depositphotos_126325932-stock-photo-many-cats-background.jpg") center/cover no-repeat;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 4rem 2rem;
-            position: relative;      /* NEU */
-        }
-
-        .bg-right {
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 50%;
-            height: 100%;
-            background:
-                    linear-gradient(to left, rgba(255,255,255,0.05), rgba(255,255,255,0.85)),
-                    url("https://images.pexels.com/photos/1482620/pexels-photo-1482620.jpeg?auto=compress&cs=tinysrgb&w=1600")
-                    center/cover no-repeat;
-            z-index: 0;              /* statt -1 */
+            position: relative;
         }
 
         .page-wrapper {
             max-width: 900px;
             width: 100%;
-            background: #ffffff;
+            background: rgba(255,255,255,0.85);
             border-radius: 12px;
             padding: 2.2rem 2.4rem;
             border: 1px solid #d1d5db;
             box-shadow: 0 8px 30px rgba(0,0,0,0.07);
-            position: relative;      /* NEU */
-            z-index: 1;              /* NEU */
+            z-index: 1;
         }
-
 
         h1 {
             font-size: 2rem;
@@ -51,7 +36,11 @@
             color: #1e3a8a;
         }
 
-        h3 { font-size: 1.05rem; margin-bottom: 0.6rem; color: #1e3a8a; }
+        h3 {
+            font-size: 1.05rem;
+            margin-bottom: 0.6rem;
+            color: #1e3a8a;
+        }
 
         p {
             line-height: 1.55;
@@ -61,6 +50,7 @@
         }
 
         ul { margin-left: 1.25rem; margin-top: 0.4rem; }
+
         li {
             line-height: 1.5;
             font-size: 0.97rem;
@@ -111,22 +101,16 @@
         }
 
         .hidden-btn {
-            opacity: 0 !important;
+            opacity: 0;
             pointer-events: none;
-        }
-
-        @media (max-width: 900px) {
-            .bg-right { width: 100%; opacity: 0.5; }
         }
     </style>
 </head>
 
 <body>
-<div class="bg-right"></div>
-
 <main class="page-wrapper">
     <div class="badge">Feline Knowledge Brief</div>
-    <h1>Katzenbabys – Fakten und Verhalten</h1>
+    <h1>Level X</h1>
 
     <p>
         Katzenbabys zeichnen sich durch ausgeprägtes Spielverhalten, schnelle Lernfähigkeit

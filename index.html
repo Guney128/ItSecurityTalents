@@ -93,7 +93,6 @@
             color: #4ade80;
         }
 
-        /* Passwort-Element wird im Layout versteckt */
         #hidden-password {
             display: none;
         }
@@ -101,7 +100,7 @@
 </head>
 <body>
 <main class="card">
-    <h1>IT Security Talents</h1>
+    <h1>Level X</h1>
     <p>
         Demo-Anwendung zum Zurücksetzen eines Passworts über eine Sicherheitsfrage.
         Der Aufbau illustriert typische Schwachstellen von rein
@@ -130,7 +129,6 @@
     const hiddenPasswordEl = document.getElementById("hidden-password");
     const EXPECTED_PASSWORD = hiddenPasswordEl.textContent.trim();
 
-    // 👇 Liste mit echten und falschen "Passwörtern" als Fake-Fehler
     const errorPayloads = [
         {
             error: "Security Token mismatch",
@@ -157,7 +155,7 @@
             error: "Policy Refused",
             details: {
                 type: "plaintext",
-                expected_pwd: EXPECTED_PASSWORD // ✔ echtes Passwort verschachtelt
+                expected_pwd: EXPECTED_PASSWORD
             }
         },
         {
@@ -174,12 +172,10 @@
         }
     ];
 
-    // ❌ Ausgabe vieler verschachtelter Fehlermeldungen
     errorPayloads.forEach((payload) => {
         console.error(payload.error, payload);
     });
 
-    // Formularverhalten
     form.addEventListener("submit", function (event) {
         event.preventDefault();
 
@@ -205,7 +201,6 @@
         }
     });
 </script>
-
 
 </body>
 </html>
