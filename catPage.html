@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <title>Cat Insights – Eine Seite über Katzen</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            min-height: 100vh;
+            color: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            background:
+                    linear-gradient(120deg, rgba(15,23,42,0.9), rgba(15,23,42,0.75)),
+                    url("https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&w=1600")
+                    center/cover no-repeat fixed;
+        }
+
+        .page-wrapper {
+            position: relative;
+            max-width: 900px;
+            width: 100%;
+            background: rgba(15,23,42,0.9);
+            border-radius: 18px;
+            padding: 2.5rem 3rem;
+            box-shadow: 0 24px 60px rgba(0,0,0,0.6);
+            border: 1px solid rgba(148,163,184,0.3);
+            backdrop-filter: blur(14px);
+        }
+
+        h1 {
+            font-size: 2.1rem;
+            margin-bottom: 0.75rem;
+            color: #facc15;
+        }
+
+        h2 {
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: #fbbf24;
+        }
+
+        p {
+            line-height: 1.6;
+            font-size: 0.98rem;
+            color: #e5e7eb;
+            margin-bottom: 0.75rem;
+        }
+
+        ul {
+            margin-left: 1.25rem;
+            margin-top: 0.5rem;
+        }
+
+        li {
+            margin-bottom: 0.4rem;
+            line-height: 1.6;
+            color: #e5e7eb;
+        }
+
+        .tagline {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #a5b4fc;
+            margin-bottom: 0.5rem;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.25rem 0.6rem;
+            border-radius: 999px;
+            border: 1px solid rgba(129,140,248,0.6);
+            background: rgba(15,23,42,0.9);
+            font-size: 0.75rem;
+            margin-bottom: 1rem;
+            color: #c7d2fe;
+        }
+
+        .badge-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 999px;
+            background: #22c55e;
+            box-shadow: 0 0 0 3px rgba(34,197,94,0.35);
+        }
+
+        .facts-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.3fr);
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .facts-grid > div {
+            background: radial-gradient(circle at top left, rgba(56,189,248,0.16), transparent 55%);
+            border-radius: 14px;
+            padding: 1.25rem 1.3rem;
+            border: 1px solid rgba(148,163,184,0.35);
+        }
+
+        .facts-grid h3 {
+            font-size: 1rem;
+            margin-bottom: 0.6rem;
+            color: #bfdbfe;
+        }
+
+        .facts-grid li {
+            font-size: 0.92rem;
+        }
+
+        .footer-note {
+            margin-top: 1.5rem;
+            font-size: 0.85rem;
+            color: #9ca3af;
+        }
+
+        /* 🔒 Versteckter Continue-Button */
+        .continue-btn {
+            position: absolute;
+            bottom: 18px;
+            right: 24px;
+            padding: 0.55rem 1.35rem;
+            border-radius: 999px;
+            border: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            background: linear-gradient(135deg,#22c55e,#06b6d4);
+            color: #0b1120;
+            cursor: pointer;
+            box-shadow: 0 12px 30px rgba(34,197,94,0.3);
+            opacity: 0.03;           /* fast unsichtbar */
+            transition: opacity 0.25s ease, transform 0.2s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        /* Wird sichtbar, wenn man genau darüber hovert oder mit Tab den Button fokussiert */
+        .continue-btn:hover,
+        .continue-btn:focus-visible {
+            opacity: 1;
+            transform: translateY(-2px);
+        }
+
+        .continue-btn span {
+            font-size: 1rem;
+        }
+
+        @media (max-width: 720px) {
+            .page-wrapper {
+                padding: 1.75rem 1.5rem;
+            }
+            .facts-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+<main class="page-wrapper">
+    <div class="badge">
+        <span class="badge-dot"></span>
+        Feline Knowledge Brief
+    </div>
+
+    <div class="tagline">Cat Insights · Verhaltens- und Wissensübersicht</div>
+    <h1>Katzen – Fakten, Verhalten und Besonderheiten</h1>
+
+    <p>
+        Katzen zählen weltweit zu den am weitesten verbreiteten Haustieren. Sie gelten als anpassungsfähige,
+        soziale und zugleich stark territoriale Tiere. Im Folgenden werden zentrale Fakten zu Biologie,
+        Verhalten und Haltung von Hauskatzen zusammengefasst.
+    </p>
+
+    <div class="facts-grid">
+        <div>
+            <h3>Biologische und physiologische Merkmale</h3>
+            <ul>
+                <li>Hauskatzen gehören zur Familie der Felidae und zur Art <em>Felis catus</em>.</li>
+                <li>Die durchschnittliche Lebenserwartung liegt in der Wohnungshaltung bei 12–18&nbsp;Jahren.</li>
+                <li>Das Hörvermögen von Katzen umfasst Frequenzen bis über 60&nbsp;kHz und liegt damit deutlich über dem des Menschen.</li>
+                <li>Die Augen sind auf das Sehen bei schwachem Licht spezialisiert; die Tapetum-lucidum-Schicht verstärkt einfallendes Licht.</li>
+                <li>Die Schnurrhaare dienen als hochsensible taktile Sensoren und unterstützen die räumliche Orientierung.</li>
+            </ul>
+        </div>
+
+        <div>
+            <h3>Verhaltensmuster und Kommunikation</h3>
+            <ul>
+                <li>Katzen kommunizieren über Körperhaltung, Lautäußerungen (z.&nbsp;B. Miauen, Knurren) und Geruchssignale.</li>
+                <li>Das Markieren durch Kratzen und Reiben dient der Revierabgrenzung und dem sozialen Informationsaustausch.</li>
+                <li>Spielverhalten, insbesondere bei Jungtieren, dient dem Training von Jagd- und Koordinationsfähigkeiten.</li>
+                <li>Viele Katzen bevorzugen stabile Routinen und reagieren sensibel auf Veränderungen in der Umgebung.</li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>Haltungsaspekte und Wohlbefinden</h2>
+    <p>
+        Für eine artgerechte Haltung sind Rückzugsorte, vertikale Strukturen (z.&nbsp;B. Kletter- oder Kratzbäume)
+        sowie ausreichend Beschäftigung essenziell. Zusätzlich tragen strukturierte Fütterungsroutinen und
+        regelmäßige tierärztliche Kontrollen wesentlich zum Wohlbefinden bei. Umweltreize wie interaktives
+        Spielzeug und soziale Interaktion können Verhaltensauffälligkeiten vorbeugen.
+    </p>
+
+    <p class="footer-note">
+        Diese Seite dient der kompakten Darstellung grundlegender Katzenfakten und kann als Einstieg in vertiefende
+        Literatur zur Verhaltensbiologie und Haustierhaltung genutzt werden.
+    </p>
+
+    <!-- 🔐 Versteckter "Continue"-Button: führt zur nächsten Seite -->
+    <!-- URL bei Bedarf anpassen, z. B. auf deine IT-Security-Seite -->
+    <a href="index.html" class="continue-btn">
+        Continue
+        <span>⟶</span>
+    </a>
+</main>
+</body>
+</html>
