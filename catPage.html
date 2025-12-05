@@ -2,8 +2,9 @@
 <html lang="de">
 <head>
     <meta charset="utf-8">
-    <title>Cat Insights – Eine Seite über Katzen</title>
+    <title>Cat Insights – Katzenbabys</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -15,7 +16,10 @@
             align-items: center;
             justify-content: center;
             padding: 2rem;
-            background: #ffffff;
+            background:
+                    linear-gradient(0deg, rgba(255,255,255,0.65), rgba(255,255,255,0.65)),
+                    url("https://images.pexels.com/photos/1482620/pexels-photo-1482620.jpeg?auto=compress&cs=tinysrgb&w=1600")
+                    center/cover no-repeat fixed;
         }
 
         .page-wrapper {
@@ -35,11 +39,7 @@
             color: #1e3a8a;
         }
 
-        h3 {
-            font-size: 1.05rem;
-            margin-bottom: 0.6rem;
-            color: #1e3a8a;
-        }
+        h3 { font-size: 1.05rem; margin-bottom: 0.6rem; color: #1e3a8a; }
 
         p {
             line-height: 1.55;
@@ -105,9 +105,7 @@
         }
 
         @media (max-width: 720px) {
-            .facts-grid {
-                grid-template-columns: 1fr;
-            }
+            .facts-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -115,35 +113,36 @@
 <body>
 <main class="page-wrapper">
     <div class="badge">Feline Knowledge Brief</div>
-    <h1>Katzen – Fakten und Verhalten</h1>
+    <h1>Katzenbabys – Fakten und Verhalten</h1>
 
-    <p>Katzen zählen zu den meistgehaltenen Haustieren weltweit und weisen komplexe biologische sowie soziale Eigenschaften auf.</p>
+    <p>
+        Katzenbabys zeichnen sich durch ausgeprägtes Spielverhalten, schnelle Lernfähigkeit
+        und hohe soziale Bindungsbereitschaft aus. Ihre Entwicklung erfolgt in entscheidenden
+        Phasen, die durch intensive Interaktion geprägt sind.
+    </p>
 
     <div class="facts-grid">
         <div>
             <h3>Biologie</h3>
             <ul>
-                <li>Art: <em>Felis catus</em></li>
-                <li>Lebenserwartung: 12–18 Jahre</li>
-                <li>Sehr gutes Hörvermögen (bis 60 kHz)</li>
-                <li>Tapetum lucidum ermöglicht Nachtsehen</li>
-                <li>Schnurrhaare unterstützen Orientierung</li>
+                <li>Geburtsgewicht meist 80–120 g</li>
+                <li>Augen öffnen sich nach 7–14 Tagen</li>
+                <li>Milchzähne ab Woche 3–4</li>
+                <li>Wachstum besonders stark im 1. Lebensjahr</li>
             </ul>
         </div>
-
         <div>
             <h3>Verhalten</h3>
             <ul>
-                <li>Schnurren hat verschiedene Bedeutungen</li>
-                <li>Jagdinstinkt bleibt ausgeprägt</li>
-                <li>Sozialverhalten ist individuell</li>
-                <li>Spiel fördert motorische Entwicklung</li>
+                <li>Spiel trainiert Jagdverhalten</li>
+                <li>Sozialisierungsphase bis ca. 8. Woche</li>
+                <li>Mutterkatze übernimmt Erziehung</li>
             </ul>
         </div>
     </div>
 
     <p class="footer-note">
-        Diese Übersicht bietet Einblicke in zentrale verhaltensbiologische und physiologische Eigenschaften von Hauskatzen.
+        Übersicht über zentrale Entwicklungsmerkmale von Katzenwelpen.
     </p>
 
     <a id="continueButton" href="index.html" class="continue-btn hidden-btn">
