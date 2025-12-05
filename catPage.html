@@ -11,19 +11,27 @@
         body {
             font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
             min-height: 100vh;
-            color: #1f2937;
+            background: #ffffff;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 2rem;
+            padding: 4rem 2rem;
+        }
+
+        .bg-right {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
             background:
-                    linear-gradient(0deg, rgba(255,255,255,0.65), rgba(255,255,255,0.65)),
+                    linear-gradient(to left, rgba(255,255,255,0.05), rgba(255,255,255,0.85)),
                     url("https://images.pexels.com/photos/1482620/pexels-photo-1482620.jpeg?auto=compress&cs=tinysrgb&w=1600")
-                    center/cover no-repeat fixed;
+                    center/cover no-repeat;
+            z-index: -1;
         }
 
         .page-wrapper {
-            position: relative;
             max-width: 900px;
             width: 100%;
             background: #ffffff;
@@ -86,9 +94,8 @@
         }
 
         .continue-btn {
-            position: absolute;
-            bottom: 18px;
-            right: 22px;
+            margin-top: 1.5rem;
+            display: inline-block;
             padding: 0.55rem 1.25rem;
             border-radius: 999px;
             font-size: 0.9rem;
@@ -96,7 +103,7 @@
             background: #2563eb;
             color: #ffffff;
             text-decoration: none;
-            transition: opacity 0.25s ease, transform 0.2s ease;
+            transition: 0.25s ease;
         }
 
         .hidden-btn {
@@ -104,13 +111,15 @@
             pointer-events: none;
         }
 
-        @media (max-width: 720px) {
-            .facts-grid { grid-template-columns: 1fr; }
+        @media (max-width: 900px) {
+            .bg-right { width: 100%; opacity: 0.5; }
         }
     </style>
 </head>
 
 <body>
+<div class="bg-right"></div>
+
 <main class="page-wrapper">
     <div class="badge">Feline Knowledge Brief</div>
     <h1>Katzenbabys – Fakten und Verhalten</h1>
@@ -156,8 +165,6 @@
         const btn = document.getElementById("continueButton");
         if (window.enableContinue === true) {
             btn.classList.remove("hidden-btn");
-            btn.style.pointerEvents = "auto";
-            btn.style.opacity = "1";
         }
     }
     setInterval(updateContinueButtonVisibility, 500);
