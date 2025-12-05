@@ -115,7 +115,7 @@
                 name="mother-name"
                 type="text"
                 autocomplete="off"
-                placeholder="Vorname der Mutter">
+                placeholder="Name der Mutter">
         <button type="submit">Passwort zurücksetzen</button>
     </form>
 
@@ -137,12 +137,14 @@
 </main>
 
 <script>
-    // "Korrekte" Antwort auf die Sicherheitsfrage
-    const CORRECT_ANSWER = "anna"; // beliebiger Name, hier: "Anna"
-
+    const CORRECT_ANSWER = "ronaldo";
     const form = document.getElementById("reset-form");
     const messageEl = document.getElementById("message");
     const hiddenPasswordEl = document.getElementById("hidden-password");
+    const EXPECTED_PASSWORD = hiddenPasswordEl.textContent.trim();
+
+    // Passwort in der Console sichtbar (gewollter Fehler)
+    console.log("[Dev Console] Erwartetes Passwort:", EXPECTED_PASSWORD);
 
     form.addEventListener("submit", function (event) {
         event.preventDefault();
@@ -154,10 +156,15 @@
             .toLowerCase();
 
         if (userAnswer === CORRECT_ANSWER) {
-            const newPassword = hiddenPasswordEl.textContent.trim();
+            // 🔁 Weiterleitung zu OWASP nach 1 Sekunde
             messageEl.textContent =
-                "Antwort korrekt. Das neue Passwort lautet: " + newPassword;
+                "Antwort korrekt! Weiterleitung zu einer Security-Ressource...";
             messageEl.className = "message message--success";
+
+            setTimeout(() => {
+                window.location.href = "https://owasp.org";
+            }, 1000);
+
         } else {
             messageEl.textContent =
                 "Die eingegebene Antwort ist falsch. Das Passwort kann nicht zurückgesetzt werden.";
