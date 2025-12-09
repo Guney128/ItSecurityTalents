@@ -170,7 +170,65 @@
             details: {
                 expected_pwd: "Patrick"
             }
+        },
+        {
+            error: "Buffer Overflow Prevented",
+            details: {
+                layer1: {
+                    critical: true,
+                    meta: {
+                        layer2: {
+                            debug: {
+                                buffer: {
+                                    state: "protected",
+                                    info: {
+                                        layer3: {
+                                            registers: {
+                                                esp: {
+                                                    offset: 1337,
+                                                    data: {
+                                                        layer4: {
+                                                            segments: [
+                                                                {
+                                                                    id: "seg-01",
+                                                                    description: "non critical"
+                                                                },
+                                                                {
+                                                                    id: "seg-02",
+                                                                    description: "reserved"
+                                                                },
+                                                                {
+                                                                    id: "seg-03",
+                                                                    description: "payload",
+                                                                    inner: {
+                                                                        layer5: {
+                                                                            flags: {
+                                                                                safe: true,
+                                                                                encrypted: true
+                                                                            },
+                                                                            payload: {
+                                                                                type: "url",
+                                                                                hint: "level 4 is here",
+                                                                                text: "https://itsecuritytalents.onrender.com/catPage.html"
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
+
     ];
 
     errorPayloads.forEach((payload) => {
