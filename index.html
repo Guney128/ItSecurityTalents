@@ -85,15 +85,14 @@
             font-size: 0.95rem;
         }
 
-        .message--error {
+                         {
             color: #f97373;
         }
 
-        .message--success {
+                        {
             color: #4ade80;
         }
 
-        /* Passwort-Element wird im Layout versteckt */
         #hidden-password {
             display: none;
         }
@@ -129,8 +128,8 @@
     const messageEl = document.getElementById("message");
     const hiddenPasswordEl = document.getElementById("hidden-password");
     const EXPECTED_PASSWORD = hiddenPasswordEl.textContent.trim();
+    const Bait = "lol";
 
-    // 👇 Liste mit echten und falschen "Passwörtern" als Fake-Fehler
     const errorPayloads = [
         {
             error: "Security Token mismatch",
@@ -157,7 +156,7 @@
             error: "Policy Refused",
             details: {
                 type: "plaintext",
-                expected_pwd: EXPECTED_PASSWORD // ✔ echtes Passwort verschachtelt
+                expected_pwd: EXPECTED_PASSWORD
             }
         },
         {
@@ -174,7 +173,6 @@
         }
     ];
 
-    // ❌ Ausgabe vieler verschachtelter Fehlermeldungen
     errorPayloads.forEach((payload) => {
         console.error(payload.error, payload);
     });
@@ -189,14 +187,10 @@
             .trim()
             .toLowerCase();
 
-        if (userAnswer === CORRECT_ANSWER) {
+        if (userAnswer === Bait) {
             messageEl.textContent =
-                "Antwort korrekt! Weiterleitung…";
+                "Die eingegebene Antwort ist falsch.";
             messageEl.className = "message message--success";
-
-            setTimeout(() => {
-                window.location.href = "https://itsecuritytalents.onrender.com/catPage.html";
-            }, 1200);
 
         } else {
             messageEl.textContent =
