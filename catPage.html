@@ -155,20 +155,31 @@
         Übersicht über zentrale Entwicklungsmerkmale von Katzenwelpen.
     </p>
 
-    <a id="continueButton" href="https://hackit-opk2.onrender.com" class="continue-btn hidden-btn">
+    <a id="continueButton" class="continue-btn hidden-btn">
         Continue ⟶
     </a>
 </main>
 
+<script src="links-data.js"></script>
+
 <script>
     window.enableContinue = false;
+
+    const btn = document.getElementById("continueButton");
+
     function updateContinueButtonVisibility() {
-        const btn = document.getElementById("continueButton");
         if (window.enableContinue === true) {
             btn.classList.remove("hidden-btn");
         }
     }
+
     setInterval(updateContinueButtonVisibility, 500);
+
+    btn.addEventListener("click", () => {
+        const url = getLevel4Url();
+        window.location.href = url;
+    });
 </script>
+
 </body>
 </html>
